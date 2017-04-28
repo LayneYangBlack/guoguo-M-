@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <title>果果部落</title>
+    <link rel="stylesheet" href="../css/xcd.css">
+</head>
+<body>
+<div class="content" id="app">
+
+    <div class="add" v-on:click="openEditXcd()">添加行程单</div>
+    <div class="day_detail" v-for="(items,index) in allList">
+        <div class="day_title">
+            <div class="day_num">DAY{{index+1}}</div>
+            <div class="day_time">{{items.journeys.time}}</div>
+            <!--<div class="toggle"></div>-->
+            <div style="clear: both"></div>
+        </div>
+        <div class="hideBox dayday">
+            <div style="clear: both;" v-for="(item,index) in items.goodList">
+                <div class="day_title1">
+                    <div class="back">{{index+1}}</div>
+                    <p>{{item.title}}</p>
+                </div>
+                <div class="day_img">
+                    <img :src="item.icon" alt="" v-bind:style="item.style" >
+                </div>
+            </div>
+            <div class="jouney">
+                <div class="jouney-item">
+                <span class="jouney-left">
+                    <img src="../icon/way_1.jpg" alt=""><span>行程单编号:</span>
+                </span>
+                    {{items.journeys.id}}
+                </div>
+                <div class="jouney-item">
+                <span class="jouney-left">
+                    <img src="../icon/way_2.jpg" alt=""><span>预计消费:</span>
+                </span>
+                    {{items.journeys.money}}元
+                </div>
+                <div class="jouney-item">
+                <span class="jouney-left">
+                    <img src="../icon/way_3.jpg" alt=""><span>游客姓名:</span>
+                </span>
+                    {{items.journeys.name}}
+                </div>
+                <div class="jouney-item">
+                <span class="jouney-left">
+                    <img src="../icon/way_4.jpg" alt=""><span>联系方式:</span>
+                </span>
+                    {{items.journeys.phone}}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+<footer>
+    <ul>
+
+        <li>
+            <a href="../index.html">
+                <img src="../icon/logo.jpg" alt="">
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+                <img src="../icon/logo.jpg" alt="">
+                <p>行程单</p>
+        </li>
+        <li>
+            <a href="../html/shopCar.html">
+                <img src="../icon/logo.jpg" alt="">
+                <p>购物车</p>
+            </a>
+
+        </li>
+        <li onclick="window.location.href='./user/html'">
+            <img src="../icon/logo.jpg" alt="">
+            <p>我的</p>
+        </li>
+    </ul>
+</footer>
+</div>
+</body>
+<script src="../js/util.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue.resource.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/xcd.js"></script>
+<script>
+//    $(".day_title").on('click',function(){
+//        alert(1)
+//        if($(this).parent(".day_detail").find(".dayday").hasClass("dayday")){
+//            $(this).parent(".day_detail").find(".dayday").attr("class","dayday2")
+//            $(this).parent(".day_detail").find(".toggle").attr("class","toggle2")
+//        }else{
+//            $(this).parent(".day_detail").find(".dayday2").attr("class","dayday")
+//            $(this).parent(".day_detail").find(".toggle2").attr("class","toggle")
+//        }
+//    })
+</script>
+</html>

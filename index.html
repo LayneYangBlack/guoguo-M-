@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <link rel="stylesheet" href="./css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+   <header>
+       <div class="city" onclick="window.location = './html/cityList.html'">
+           <img src="./icon/address.png" alt="">
+           <span id="city"></span>
+       </div>
+        <div class="search" onclick="window.location='./html/search.html'">
+
+                搜索目的地/酒店/景点/航班
+
+        </div>
+       <div class="tp-title">
+           果果部落
+       </div>
+   </header>
+   <div id="app">
+       <div class="lunBo swiper-container" >
+           <div class="swiper-wrapper" >
+               <div class="swiper-slide" v-for="item in imgList">
+                   <img  :src="item.icon" class="lunBoImg" alt="">
+               </div>
+           </div>
+           <!-- 如果需要分页器 -->
+           <div class="swiper-pagination"></div>
+       </div>
+
+       <div class="content">
+           <div class="fengjing">
+               <div class="content-title" style="color: #8d278b" v-on:click="openMore(3)">
+                   <span class="float-lf title-lf">热门景点</span>
+                   <span class="float-rt title-rt">查看更多>></span>
+               </div>
+               <div class="content" >
+                   <div class="item" v-for="(item,index) in viewList" v-on:click="openDetail(item)">
+                       <div style="height: 140px;overflow: hidden;">
+                           <img :src="item.icon" alt="" v-bind:style="item.style">
+                       </div>
+                       <p style="color: #000;">
+                          {{item.title}}
+                       </p>
+                           <p>￥{{item.price}}</p>
+                   </div>
+               </div>
+           </div>
+           <div class="gouwu">
+               <div class="content-title" style="color: #8d278b" @click="openMore(4)">
+                   <span class="float-lf title-lf">疯狂购物</span>
+                   <span class="float-rt title-rt">查看更多>></span>
+               </div>
+               <div class="content">
+                   <div class="item" v-for="item in shopList"  v-on:click="openDetail(item)">
+                       <div style="height: 140px;overflow: hidden;">
+                           <img :src="item.icon" alt="" v-bind:style="item.style">
+                       </div>
+                       <div style="color: #000;">
+                           {{item.title}}
+                       </div>
+                       <p>￥{{item.price}}</p>
+                   </div>
+               </div>
+           </div>
+           <div class="jiaotong">
+               <div class="content-title" style="color: #209ef6" @click="openMore(1)">
+                   <span class="float-lf title-lf">出行大优惠</span>
+                   <span class="float-rt title-rt">查看更多>></span>
+               </div>
+               <div class="content">
+                   <div class="item" v-for="item in goList"  v-on:click="openDetail(item)">
+                       <div style="height: 140px;overflow: hidden;">
+                           <img :src="item.icon" alt="" v-bind:style="item.style">
+                       </div>
+                       <p style="color: #000;">
+                           {{item.title}}
+                       </p>
+                       <p>￥{{item.price}}</p>
+                   </div>
+               </div>
+           </div>
+           <div class="zhusu">
+               <div class="content-title" style="color: #4fb400" @click="openMore(2)">
+                   <span class="float-lf title-lf">优惠酒店</span>
+                   <span class="float-rt title-rt">查看更多>></span>
+               </div>
+               <div class="content">
+                   <div class="item" v-for="item in hotelList"  v-on:click="openDetail(item)">
+                       <div style="height: 140px;overflow: hidden;">
+                           <img :src="item.icon" alt="" v-bind:style="item.style">
+                       </div>
+                       <p style="color: #000;">
+                           {{item.title}}
+                       </p>
+                       <p>￥{{item.price}}</p>
+                   </div>
+               </div>
+           </div>
+           <div class="chi">
+               <div class="content-title" style="color: #ff7800" @click="openMore(5)">
+                   <span class="float-lf title-lf">美食推荐</span>
+                   <span class="float-rt title-rt">查看更多>></span>
+               </div>
+               <div class="content">
+                   <div class="item" v-for="item in eatList"  v-on:click="openDetail(item)">
+                       <div style="height: 140px;overflow: hidden;">
+                           <img :src="item.icon" alt="" v-bind:style="item.style">
+                       </div>
+
+                       <p style="color: #000;">
+                           {{item.title}}
+                       </p>
+                       <p>￥{{item.price}}</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div style="width: 100%;height: 50px;"></div>
+
+
+<footer>
+    <ul>
+        <li>
+            <img src="./icon/logo.jpg" alt="">
+            <p>首页</p>
+        </li>
+        <li v-on:click="openXcd()">
+
+                <img src="./icon/logo.jpg" alt="">
+                <p>行程单</p>
+
+        </li>
+        <li v-on:click="openShopCar()">
+
+                <img src="./icon/logo.jpg" alt="">
+                <p>购物车</p>
+
+
+        </li>
+        <li  v-on:click="openUser()">
+            <img src="./icon/logo.jpg" alt="">
+            <p>我的</p>
+        </li>
+    </ul>
+</footer>
+   </div>
+</body>
+<script src="./js/util.js"></script>
+<script src="js/swiper-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/vue.resource.js"></script>
+<script src="./js/public.js"></script>
+
+<script src="http://api.map.baidu.com/api?v=2.0&ak=53rV1hvTAMaamfxuo77LPzjW0wukwlxS" type="text/javascript"></script>
+<script type="text/javascript" src="./js/index.js"></script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <title>果果部落</title>
+    <link rel="stylesheet" href="../css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="../css/detail.css">
+</head>
+<body>
+<div id="app">
+    <div id="topbar">
+        <div class="left_title" style="text-align: center;margin: 0;">
+            <div id="leftButton" onclick="javascript:history.go(-1);">
+                <img src="../icon/daohang.png" >
+            </div>
+        </div>
+    </div>
+    <div class="lunBo swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="item in imgList">
+                <img :src="item" class="lunBoImg" alt="">
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <p class="de-title">
+       {{pageData.title}}
+    </p>
+    <div class="price">
+        <p>促销价   <span style="color: red">￥{{pageData.price}}</span></p>
+        <!--<p>出发时间 <span></span><input class="dateChoose" type="date"></p>-->
+        <p style="margin-top: 10px;">
+        <span class="man">
+            <span style="float: left;margin-right: 25px;">数量</span>
+                <button v-on:click="personNum(-1,'#manNum')">—</button>
+                <input id="manNum" type="text" value="1" v-model="pageData.num">
+                <button v-on:click="personNum(1,'#manNum')">+</button>
+
+        </span>
+        </p>
+    </div>
+    <div>
+        <div class="notice-content">
+            <div class="play-title">
+                购买须知
+            </div>
+            <div style="padding: 0 10px 0 20px;" v-html="pageData.info">
+
+            </div>
+            <div class="play-title" >
+                用户评价
+            </div>
+            <span style="float: right" onclick="window.location.href='commentList.html'">查看更多>></span>
+            <div class="noOne" v-if="flag">
+                暂无内容
+            </div>
+            <div class="comment">
+               <span style="font-weight: bolder">
+                   {{comment.name}}
+               </span>
+                <span style="font-size: 14px;color:#cccccc;">{{comment.ctime}}</span>
+                <p>
+                    {{comment.content}}
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="buy" v-on:click="inShopCar()">加入购物车</button>
+    <button class="collect" v-on:click="inCollect()">收藏</button>
+</div>
+
+</body>
+<script src="../js/swiper-3.3.1.min.js"></script>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/detail.js"></script>
+<script>
+
+
+</script>
+</html>

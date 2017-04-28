@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <title>Title</title>
+    <style>
+        #topbar {
+            background-color: #57b7e3;
+            height : 44px;
+            line-height : 44px;
+            color: #FFF;
+            font-size: 16px;
+            position: relative;
+            text-align: center;
+            /*border-bottom: #E0E0E0 1px solid;*/
+        }
+
+        #leftButton{
+            position: absolute;
+            text-align: center;
+            margin-top: 2px;
+            width: 50px;
+            height: 42px;
+            z-index: 10;
+        }
+        #leftButton img{
+            width: 42px;
+        }
+        .comment{margin: 10px 0}
+    </style>
+</head>
+<body>
+<div id="topbar">
+    <div class="left_title" style="text-align: center;margin: 0;">
+        <div id="leftButton" onclick="javascript:history.go(-1);">
+            <img src="../icon/daohang.png" >
+        </div>
+    </div>
+</div>
+<div id="app">
+    <div class="comment" v-for="item in comment">
+               <span style="font-weight: bolder">
+                   {{item.name}}
+               </span>
+        <span style="font-size: 14px;color:#cccccc;">{{item.ctime}}</span>
+        <p>
+            {{item.content}}
+        </p>
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/comment.js"></script>
+</html>

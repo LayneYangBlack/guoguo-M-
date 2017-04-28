@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <title>果果部落</title>
+    <link rel="stylesheet" href="../css/editXcd.css">
+    <link rel="stylesheet" href="../css/mui.min.css">
+    <link rel="stylesheet" href="../css/mui.picker.all.css">
+</head>
+<body>
+<div id="topbar">
+    <div class="left_title" style="text-align: center;margin: 0;">
+        <div id="leftButton" onclick="javascript:history.go(-1);">
+            <img src="../icon/daohang.png" >
+        </div>
+    </div>
+</div>
+<div id="app">
+<div id="addcontent">
+
+    <div class="schedule-box">
+        <div class="schedule-content">
+            <!--<p class="day-title">DAY<span class="dayNum">1</span></p>-->
+                <input type="text" style="border: none;width: 76%;" id="time" v-model='time'>
+
+            <img src="../icon/dateIcon.png" class=" date-icon" data-options='{"type":"date"}' style="float: right;" alt="">
+            <ul class="schedule-list">
+                <li>
+                    <span class="sch-title go-color">行</span>
+                    <span class="addButton addBg" v-on:click="shadeShow(1)"></span>
+                </li>
+                <ul id="newlist1"  >
+                    <li class="item" v-for="item in selectedGoods">
+                        <img :src="item.icon" alt="" :style = "item.style">
+                        <div >
+                            {{item.title}}
+                        </div>
+                        <p> ￥{{item.price}}</p>
+                    </li>
+                </ul>
+                <li>
+                    <span class="sch-title hotel-color">住</span>
+                    <span class="addButton addBg" v-on:click="shadeShow(2)"></span>
+                </li>
+                <ul id="newlist2">
+                    <li class="item" v-for="item in selectedGoods1">
+                        <img :src="item.icon" alt="" :style = "item.style">
+                        <div >
+                            {{item.title}}
+                        </div>
+                        <p> ￥{{item.price}}</p>
+                    </li>
+                </ul>
+                <li>
+                    <span class="sch-title eat-color">吃</span>
+                    <span class="addButton addBg" v-on:click="shadeShow(3)"></span>
+                </li>
+                <ul id="newlist3">
+                    <li class="item" v-for="item in selectedGoods2">
+                        <img :src="item.icon" alt="" :style = "item.style">
+                        <div >
+                            {{item.title}}
+                        </div>
+                        <p> ￥{{item.price}}</p>
+                    </li>
+                </ul>
+                <li>
+                    <span class="sch-title play-color">玩</span>
+                    <span class="addButton addBg" v-on:click="shadeShow(4)"></span>
+                </li>
+                    <ul id="newlist4">
+                        <li class="item" v-for="item in selectedGoods3">
+                            <img :src="item.icon" alt="" :style = "item.style">
+                            <div >
+                                {{item.title}}
+                            </div>
+                            <p> ￥{{item.price}}</p>
+                        </li>
+                    </ul>
+                <li>
+                    <span class="sch-title another-color">其他</span>
+                    <span class="addButton addBg"v-on:click="shadeShow(5)"></span>
+                </li>
+                <ul id="newlist5">
+                    <li class="item" v-for="item in selectedGoods4">
+                        <img :src="item.icon" alt="" :style = "item.style">
+                        <div >
+                            {{item.title}}
+                        </div>
+                        <p> ￥{{item.price}}</p>
+                    </li>
+                </ul>
+            </ul>
+
+        </div>
+        <div>
+            <label for="" class="label">姓名</label>
+            <input type="text" class="input" v-model="name">
+        </div>
+        <div>
+            <label for="" class="label">手机号</label>
+            <input type="text" class="input" v-model="phone">
+        </div>
+        <div>
+            <label for="" class="label">总费用</label>
+            <input style="width: 30%;font-size: 14px;" readonly type="text" v-model="fee">元
+        </div>
+        <button v-on:click="postList()" style="display:block;margin: 0 auto;background-color: rgb(79, 180, 0);color: white ">保存</button>
+    </div>
+
+</div>
+
+<div id="shade" v-on:click = "hideBox()"></div>
+<div id="popUpbox">
+    <img src="../icon/close.png" alt="" style="width: 24px;float: right;display: block;" v-on:click="hideBox()">
+    <div class="item" v-for="(item,index) in collectGood" v-on:click="selectGood(item,index)">
+        <div style="height: 140px;overflow: hidden;">
+            <img :src="item.icon" alt="" :style = "item.style">
+        </div>
+        <p class="title">
+            {{item.title}}
+        </p>
+        <p>￥{{item.price}}</p>
+    </div>
+</div>
+</div>
+</body>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue.resource.js"></script>
+<script src="../js/public.js"></script>
+<script src="../js/editXcd.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.picker.all.js"></script>
+<script src="../js/util.js"></script>
+<script>
+    (function($) {
+        $.init();
+        var result = $('#result')[0];
+        var btns = $('.date-icon');
+        btns.each(function(i, btn) {
+            btn.addEventListener('tap', function() {
+                var optionsJson = this.getAttribute('data-options') || '{}';
+                var options = JSON.parse(optionsJson);
+                var timeInput = document.getElementById("time");
+                var id = this.getAttribute('id');
+                var t = new Date();
+                var picker = new $.DtPicker({
+                    type:'date',
+                    endDate: new Date(t.getFullYear(), t.getMonth(), t.getDate()),//设置开始日期
+                    beginDate:  new Date(1900, 01, 01)//设置结束日期
+                });
+                picker.show(function(rs) {
+                    timeInput.value=rs.text;
+                    localStorage.setItem("BGtime",timeInput.value)
+                    picker.dispose();
+                });
+            }, false);
+        });
+    })(mui);
+    $("#shade").on('touchmove',function(e) {
+             var e = e || window.event;
+             e.preventDefault();
+         })
+</script>
+</html>

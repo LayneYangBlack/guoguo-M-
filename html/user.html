@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0" />
+    <title>果果部落</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{width: 100%;font-size: 14px;}
+        a{text-decoration: none;color: #000;}
+        ul,li{list-style: none}
+        footer{width: 100%;height: 54px;position: fixed;bottom: 0;}
+        footer ul{width: 100%;overflow: hidden;  height:100%;background-color: #fff;display: flex;justify-content: space-between;}
+        footer ul li{width: 24%;height: 100%;float: left;}
+        footer ul li img{width: 30px;margin: 5px auto 0;display: block;}
+        footer p{text-align: center}
+        .item{
+            height: 4rem;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            border-bottom: 1px #f1f2f3 solid;
+        }
+        .nextIcon{width: 24px;}
+    </style>
+</head>
+<body>
+<div class="item" onclick="openPage()">
+    <span class="leftMsg">修改密码</span>
+    <img class="nextIcon"  src="../icon/icon_right_normal.png">
+</div>
+<footer>
+    <ul>
+        <li>
+            <a href="../index.html">
+                <img src="../icon/logo.jpg" alt="">
+                <p>首页</p>
+            </a>
+        </li>
+        <li>
+            <img src="../icon/logo.jpg" alt="">
+            <p>行程单</p>
+        </li>
+        <li>
+            <a href="../html/shopCar.html">
+                <img src="../icon/logo.jpg" alt="">
+                <p>购物车</p>
+            </a>
+
+        </li>
+        <li>
+            <img src="../icon/logo.jpg" alt="">
+            <p>我的</p>
+        </li>
+    </ul>
+</footer>
+</body>
+<script>
+    function openPage() {
+        if(localStorage.getItem("user")!=undefined){
+            window.location.href='./forget.html'
+        }else {
+            showConfirm();
+        }
+
+    }
+    function showConfirm() {
+        var r = confirm("您当前未登录，是否前往登录页？")
+        if(r == true){
+            window.location.href = "./login.html";
+        }else{
+
+        }
+    }
+</script>
+</html>
