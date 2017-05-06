@@ -88,9 +88,14 @@
         zoom: 10,
         center: [116.480983,40.0958]
     });
-
+    marker = new AMap.Marker({
+        icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+        position: [116.480983,40.0958]
+    });
+    marker.setMap(map);
     map.on("click",function (e) {
         window.location.href="http://m.amap.com/?q=30.243309729926,120.14080713581";
+
     })
 </script>
 </html>
