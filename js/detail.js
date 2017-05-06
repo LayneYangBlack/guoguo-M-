@@ -123,7 +123,6 @@ var vm = new Vue({
                 }
             })
         }
-
     }
 })
 vm.$watch('imgList',function () {
