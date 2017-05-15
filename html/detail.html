@@ -30,6 +30,7 @@
     </p>
     <div class="price">
         <p>促销价   <span style="color: red">￥{{pageData.price}}</span></p>
+        <p>地址:  <span id="address">{{pageData.address}}</span></p>
         <!--<p>地址 <span>{{pageData.address}}</span></p>-->
         <p style="margin-top: 10px;">
         <span class="man">
@@ -82,20 +83,25 @@
 <script src="../js/detail.js"></script>
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=bf10f3a2338596c695faf89d1b4b55f4"></script>
 <script>
-//    var address = localStorage.getItem("detail").address
-    var map = new AMap.Map('map',{
-        resizeEnable: true,
-        zoom: 10,
-        center: [116.480983,40.0958]
-    });
-    marker = new AMap.Marker({
-        icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-        position: [116.480983,40.0958]
-    });
-    marker.setMap(map);
-    map.on("click",function (e) {
-        window.location.href="http://m.amap.com/?q=30.243309729926,120.14080713581";
+    if(JSON.parse(localStorage.getItem("detail")).location){
+        var address = JSON.parse(JSON.parse(localStorage.getItem("detail")).location);
+        var map = new AMap.Map('map',{
+            resizeEnable: true,
+            zoom: 15,
+            center: [address.lng,address.lat]
+        });
+        marker = new AMap.Marker({
+            icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+            position: [address.lng,address.lat]
+        });
+        marker.setMap(map);
+        map.on("click",function (e) {
+            window.location.href="http://m.amap.com/?q="+address.lat+","+address.lng+"";
+        })
+    }else {
+        $("#address").text("暂无");
+        $("#map").hide();
+    }
 
-    })
 </script>
 </html>

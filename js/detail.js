@@ -25,6 +25,7 @@ var vm = new Vue({
                 this.gid = data.id;
                 this.num = data.num;
                 var imgs = data.carousel.split(",");
+                imgs.pop();
                     this.imgList = imgs;
             this.getCommentList();
         },
@@ -49,7 +50,7 @@ var vm = new Vue({
         },
         inShopCar:function () {
             var _this = this;
-            if (localStorage.getItem("user").user.token!=undefined){
+            if (localStorage.getItem("user")){
                 var user = JSON.parse(localStorage.getItem("user"));
                 $.ajax({
                     url:  addShoopCarUrl,
@@ -61,7 +62,6 @@ var vm = new Vue({
                         token:user.user.token
                     },
                     success:function (ret) {
-                        console.log(JSON.stringify(ret));
                         alert("添加成功")
                     }
                 })
@@ -80,7 +80,7 @@ var vm = new Vue({
         },
         inCollect:function () {
             var _this = this;
-            if(localStorage.getItem("user").user.token!=undefined){
+            if(localStorage.getItem("user")){
                 var user = JSON.parse(localStorage.getItem("user"));
                 $.ajax({
                     url:  colletGoodUrl,

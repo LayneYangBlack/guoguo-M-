@@ -9,7 +9,8 @@
 // public static int type_other = 4;//购物
 
 var serverUrl = "http://182.92.191.75:20002";
-serverUrl = "http://182.92.191.75:20023";
+ serverUrl = "http://youren.paifangwang.com.cn";
+
 //注册相关接口
 var registerUrl = serverUrl+"/user/register";
 var createAuthCodeUrl = serverUrl+"/user/createAuthCode";

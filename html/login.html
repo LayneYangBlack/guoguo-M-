@@ -43,12 +43,9 @@
 </body>
 <script src="../js/jquery-1.11.3.min.js"></script>
 <script src="../js/public.js"></script>
-<script src="../js/fastclick.js"></script>
 <script>
-    $(function() {
-        FastClick.attach(document.body);
-    });
-    document.querySelector("button").addEventListener("click",function () {
+
+    $("button").click(function () {
         var phone = $("#phone").val();
         var password = $("#password").val();
         if (phone == ""){
@@ -68,14 +65,16 @@
                 password:password
             },
             success:function (ret) {
-                setUserInfo(ret)
-                if(ret.success ==true){
+                if(ret.success){
+                    setUserInfo(ret);
+                    var user = getUserInfo();
+                    alert(user);
                     window.location.href= "../index.html";
                 }else {
                     alert(ret.msg)
                 }
             }
         })
-    },false)
+    })
 </script>
 </html>
