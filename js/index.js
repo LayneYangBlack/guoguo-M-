@@ -52,7 +52,11 @@ var vm = new Vue({
                     var domWidth = document.body.offsetWidth;
                     for(var i=0;i<ret.data.length;i++){
                         allResults[ret.data[i].id] = ret.data[i];
-                        var url =  ret.data[i].icon;
+                        if(ret.data[i].icon == ""){
+                            var url = "http://store.quakoo.com/storage/guoguo/321*157*866c64ee70300eec4e61efa1163ee697.png";
+                        }else{
+                            url =  ret.data[i].icon;
+                        }
                         var width =domWidth*0.48;
                         var height = 140;
                         var obj = getImgSizeBySize(url,width,height);
@@ -78,7 +82,11 @@ var vm = new Vue({
                     var domWidth = document.body.offsetWidth;
                     for(var i=0;i<ret.data.length;i++){
                         allResults[ret.data[i].id] = ret.data[i];
-                        var url =  ret.data[i].icon;
+                        if(ret.data[i].icon == ""){
+                            var url = "http://store.quakoo.com/storage/guoguo/321*157*866c64ee70300eec4e61efa1163ee697.png";
+                        }else{
+                            url =  ret.data[i].icon;
+                        }
                         var width =domWidth*0.48;
                         var height = 140;
                         var obj = getImgSizeBySize(url,width,height);
@@ -103,7 +111,11 @@ var vm = new Vue({
                     var domWidth = document.body.offsetWidth;
                     for(var i=0;i<ret.data.length;i++){
                         allResults[ret.data[i].id] = ret.data[i];
-                        var url =  ret.data[i].icon;
+                        if(ret.data[i].icon == ""){
+                            var url = "http://store.quakoo.com/storage/guoguo/321*157*866c64ee70300eec4e61efa1163ee697.png";
+                        }else{
+                            url =  ret.data[i].icon;
+                        }
                         var width =domWidth*0.48;
                         var height = 140;
                         var obj = getImgSizeBySize(url,width,height);
@@ -128,7 +140,11 @@ var vm = new Vue({
                     var domWidth = document.body.offsetWidth;
                     for(var i=0;i<ret.data.length;i++){
                         allResults[ret.data[i].id] = ret.data[i];
-                        var url =  ret.data[i].icon;
+                        if(ret.data[i].icon == ""){
+                            var url = "http://store.quakoo.com/storage/guoguo/321*157*866c64ee70300eec4e61efa1163ee697.png";
+                        }else{
+                            url =  ret.data[i].icon;
+                        }
                         var width =domWidth*0.48;
                         var height = 140;
                         var obj = getImgSizeBySize(url,width,height);
@@ -154,7 +170,11 @@ var vm = new Vue({
                     var domWidth = document.body.offsetWidth;
                     for(var i=0;i<ret.data.length;i++){
                         allResults[ret.data[i].id] = ret.data[i];
-                        var url =  ret.data[i].icon;
+                        if(ret.data[i].icon == ""){
+                            var url = "http://store.quakoo.com/storage/guoguo/321*157*866c64ee70300eec4e61efa1163ee697.png";
+                        }else{
+                            url =  ret.data[i].icon;
+                        }
                         var width =domWidth*0.48;
                         var height = 140;
                         var obj = getImgSizeBySize(url,width,height);
