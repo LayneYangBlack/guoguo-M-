@@ -205,6 +205,11 @@ var vm = new Vue({
         },
         getCityList:function () {
             var _this = this;
+            var ua = window.navigator.userAgent;
+            var isSafari = ua.indexOf("Safari") != -1 && ua.indexOf("Version") != -1;
+            if(isSafari){
+                alert("safari用户请关闭无痕浏览之后查看");
+            }
             if(localStorage.getItem("citysData")){
                 var cityData =JSON.parse(localStorage.getItem("citysData"));
                 _this.cityList =cityData ;
