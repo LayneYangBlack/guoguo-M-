@@ -73,7 +73,12 @@
             },
             success:function (ret) {
                 console.log(ret)
-                setTimeToCode();
+                if(ret.success == true){
+                    setTimeToCode();
+                }else {
+                    alert(ret.msg);
+                }
+
             }
         })
     }
@@ -91,7 +96,7 @@
                 sms.style.backgroundColor = "#fff";
                 sms.innerHTML = "获取验证码";
                 clearInterval(codeInterval);
-                flag = true;
+                sendFlag = true;
             }
         },1000)
     }
