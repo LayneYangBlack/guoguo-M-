@@ -338,7 +338,7 @@ var vm = new Vue({
                 )
             }
 
-        },
+        }, 
         openXcd:function () {
             if(localStorage.getItem("user")){
                 window.location.href = "./html/xcd.html"
